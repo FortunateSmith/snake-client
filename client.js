@@ -16,6 +16,12 @@ const connect = function() {
      console.log('Successfully connected to the game server');
    });
 
+   conn.on("connect", () => {
+     conn.write("Name: LSS");
+   });
+
+   console.log('Name: LSS')
+
 conn.setEncoding('utf8');
 
 return conn;
