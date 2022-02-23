@@ -1,27 +1,25 @@
 
 const { connect} = require('./client');
 
+// setup interface to handle user input from stdin
 
-// establishes a connection with game server
-//  const connect = function() {
-//    const conn = net.createConnection({
-//      host: "localhost",
-//      port: 50541,
-//    });
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
 
-//     conn.on("data", (data) => {
-//       console.log('Server says: ', data);
-//     });
- 
-//     conn.on("connect", () => {     // code that does something when the connection is first established     
-//       console.log('Successfully connected to the game server');
-//     });
+  const handleUserInput = function (key) {
+    if (key === '\u0003') {
+      process.exit();
+    }
+  };
 
-//  conn.setEncoding('utf8');
+  stdin.on("data", handleUserInput);
 
-//  return conn;
-// };
+  return stdin;
+};
 
 console.log('connecting...');
-
+setupInput();
 connect();
