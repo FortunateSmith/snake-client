@@ -1,14 +1,10 @@
-// setup interface to handle user input from stdin
-let connection;
-
-const setupInput = function (conn) {
-  connection = conn;
+const setupInput = function(conn) {
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
 
-  const handleUserInput = function (key) {
+  const handleUserInput = function(key) {
     if (key === '\u0003') {
       process.exit();
     }
@@ -25,8 +21,8 @@ const setupInput = function (conn) {
       conn.write('Move: down');
     }
     if (key === '\u006D') {
-      conn.write("Say: fnrr")
-    } 
+      conn.write("Say: hiya");
+    }
   };
 
   stdin.on("data", handleUserInput);
@@ -34,4 +30,4 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-module.exports = {setupInput}
+module.exports = {setupInput};
