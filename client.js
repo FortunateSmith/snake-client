@@ -8,23 +8,22 @@ const connect = function() {
     port: 50541,
   });
 
-   conn.on("data", (data) => {
-     console.log('Server says: ', data);
-   });
+  conn.on("data", (data) => {
+    console.log('Server says: ', data);
+  });
 
-   conn.on("connect", () => {     // code that does something when the connection is first established     
-     console.log('Successfully connected to the game server');
-   });
+  conn.on("connect", () => {
+    conn.write("Name: LSS");
+  });
 
-   conn.on("connect", () => {
-     conn.write("Name: LSS");
-   });
+  conn.on("connect", () => {     // code that does something when the connection is first established
+    console.log('Successfully connected to the game server');
+  });
 
-   console.log('Name: LSS')
+  
+  conn.setEncoding('utf8');
 
-conn.setEncoding('utf8');
-
-return conn;
+  return conn;
 };
 
 
