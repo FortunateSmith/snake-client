@@ -10,7 +10,7 @@ Before you can run this client, you will need to be running the server side whic
 
 ![](./screenshot/snekShot.png)
 
-![]***Snek in Still Life***
+***Snek in Still Life***
 
 
 ## *Getting Started*
